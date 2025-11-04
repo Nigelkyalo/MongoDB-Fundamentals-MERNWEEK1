@@ -2,6 +2,69 @@
 
 This project contains scripts and sample data for the Week 1 MongoDB assignment.
 
+Files included
+
+- `insert_books.js` - seed script that reads `MONGODB_URI` from environment or falls back to `mongodb://localhost:27017`.
+- `queries.js` - runnable helper implementing CRUD, advanced queries, aggregation pipelines, and index helpers.
+- `.env.example` - example env file showing `MONGODB_URI` format.
+
+Prerequisites
+
+- Node.js (recommended v16+)
+- A MongoDB deployment (local or Atlas)
+
+Quick start
+
+1) Install dependencies (run once):
+
+```powershell
+npm install
+```
+
+2) Set your MongoDB connection string for the current PowerShell session (replace placeholders):
+
+```powershell
+$env:MONGODB_URI = "mongodb+srv://<username>:<password>@<cluster-url>/plp_bookstore?retryWrites=true&w=majority"
+```
+
+3) Seed the database (insert sample books):
+
+```powershell
+npm run seed
+```
+
+4) Run the demo queries (this also creates the recommended indexes and runs an example `explain`):
+
+```powershell
+npm run demo
+```
+
+You can also run the scripts directly without npm:
+
+```powershell
+# seed
+node insert_books.js
+
+# demo
+node queries.js
+```
+
+What `seed` and `demo` do
+
+- `seed` (runs `insert_books.js`) — inserts the sample dataset into `plp_bookstore.books`. If the collection already has documents the script will drop it first.
+- `demo` (runs `queries.js`) — runs example queries, aggregated results, creates the `title` and `author+published_year` indexes, and prints an `explain()` for `title: "1984"`.
+
+Security
+
+- Do NOT commit real credentials. Use environment variables or a local `.env` file (and do not commit `.env`).
+
+If you'd like, I can also:
+
+- Add CI checks, tests, or a short script to export the explain() output to a JSON file for your report.
+# MongoDB Week 1 - plp_bookstore
+
+This project contains scripts and sample data for the Week 1 MongoDB assignment.
+
 Files added/updated:
 
 - `insert_books.js` - sample insert script (reads `MONGODB_URI` env var or falls back to `mongodb://localhost:27017`).
