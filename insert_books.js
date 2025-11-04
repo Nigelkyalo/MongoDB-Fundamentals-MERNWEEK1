@@ -3,8 +3,9 @@
 // Import MongoDB client
 const { MongoClient } = require('mongodb');
 
-// Connection URI (replace with your MongoDB connection string if using Atlas)
-const uri = 'mongodb://localhost:27017';
+// Connection URI: read from environment variable for Atlas or fall back to localhost
+// To use Atlas set MONGODB_URI (example in .env.example). Do NOT commit credentials.
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 
 // Database and collection names
 const dbName = 'plp_bookstore';
